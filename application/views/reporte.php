@@ -1,0 +1,67 @@
+	<!-- section: team -->
+	<section id="cargar" class="section green" >
+		<div class="container" >
+			<h4>Generar Reporte</h4>
+			<div class="row">
+				<div class="col-md-2">
+                 </div>
+                 <div class="col-md-8">
+                 	<section id="cargar_blank" class="section" >
+                 	<div class="container" style="padding-left:40%; padding-right: 25%; " >
+                     
+                      <label for="id_entidad">
+                        Seleccionar Entidad
+                      </label>
+                       <?php echo form_open('/ReporteControlador/generarReporte');?>
+                      <select name="id_entidad" class="form-control">
+                                    <?php
+                                        foreach($entidades as $row)
+                                        { 
+
+                                           echo '<option value="'.$row->Id.'">'.$row->NombreEntidad.'</option>';
+                                        }
+                                       ?> 
+                      </select>
+                      <label for="datetimepicker1">
+                        Seleccionar fecha inicial
+                      </label>
+
+                                        <div id="datetimepicker1" class="input-append date">
+                                          <input type="text" name="finicial" style="height: 30px;"></input>
+                                          <span class="add-on">
+                                            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                                          </span>
+                                        </div>
+                    <label for="datetimepicker2">
+                        Seleccionar fecha final
+                      </label>
+
+                                        <div id="datetimepicker2" class="input-append date">
+                                          <input type="text" name="ffinal" style="height: 30px;"></input>
+                                          <span class="add-on">
+                                            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                                          </span>
+                                        </div>
+
+                            
+                    <div class="col-md-12" style="padding-left: 5%; margin-top: 20px;">
+                           <?php 
+                              $datas = array('style' => ''); ?>
+                           <?= form_submit('','Generar reporte') ?>
+                         </div>     
+                  <?= form_close() ?>
+
+                     
+                   </div>
+                    </section>	 
+			        <div class="col-md-2">
+                   </div>
+                 	
+	   </div>
+		</div>
+		<!-- /.container -->	
+	</section>
+	<!-- end section: team -->
+	<!-- section: services -->
+	
+	

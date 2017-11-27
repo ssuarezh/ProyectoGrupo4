@@ -1,1 +1,0 @@
-En esta carpeta se deben ubicar todos los archivos que se quieran subir al sistema utilizando la tarea automática.
