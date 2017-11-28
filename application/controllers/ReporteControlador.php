@@ -7,6 +7,7 @@ class ReporteControlador extends CI_Controller {
   	$this->load->model('Reporte_Model_S');
 	  $this->load->helper('url');
 	  $this->load->helper('form');
+    $this->load->library('export_excel');
   }
 
 	function index() 
@@ -39,27 +40,28 @@ class ReporteControlador extends CI_Controller {
    	 );
 
    	 $resultado = $this->Reporte_Model_S->obtenerDatosReporte($datos);
-     $data['message'] = '<div class="height:10%; width:20%; padding-bottom:100px; margin-bottom: 50px; "> No hay datos </div>';
+     //$data['message'] = '<div class="height:10%; width:20%; padding-bottom:100px; margin-bottom: 50px; "> No hay datos </div>';
+
     if ($resultado) 
     { 
-       $resultado1 = $this->Reporte_Model_S->obtenerEntidades();
-       $algo['entidades'] = $resultado1;
-    //  $this->load->view('header/header');
-    	$this->load->view('reporte', $algo);
-      $this->load->view('footer/footer');
-      echo "entro";
-      //
+      $resultado1 = $this->Reporte_Model_S->obtenerEntidades();
+      $algo['entidades'] = $resultado1;
+   
+      //$this->load->view('header/header');
+    	//$this->load->view('reporte', $algo);
+      //$this->load->view('footer/footer');     
+
+      $this->export_excel->to_excel($resultado, 'Archivo_Excel');
     }
     else
     {
-       $resultado1 = $this->Reporte_Model_S->obtenerEntidades();
-       $algo['entidades'] = $resultado1;
-      $this->load->view('header/header');
-      $this->load->view('reporte', $algo);
-      $this->load->view('footer/footer');
+      //$resultado1 = $this->Reporte_Model_S->obtenerEntidades();
+      //$algo['entidades'] = $resultado1;
+      //$this->load->view('header/header');
+      //$this->load->view('reporte', $algo);
+      //$this->load->view('footer/footer');
       echo"no Entro a la consulta";
     } 
  }
-
 }
 ?>

@@ -12,7 +12,8 @@
                       <label for="id_entidad">
                         Seleccionar Entidad
                       </label>
-                       <?php echo form_open('/ReporteControlador/generarReporte');?>
+                      <form action="<?= base_url() ?>index.php/ReporteControlador/generarReporte" method="POST">  
+                       <!-- <?php //echo form_open('/ReporteControlador/generarReporte');?> -->
                       <select name="id_entidad" class="form-control">
                                     <?php
                                         foreach($entidades as $row)
@@ -45,12 +46,12 @@
 
                             
                     <div class="col-md-12" style="padding-left: 5%; margin-top: 20px;">
-                           <?php 
-                              $datas = array('style' => ''); ?>
-                           <?= form_submit('','Generar reporte') ?>
+                        
+                              <input type="Submit" value="Generar Reporte "> 
                          </div>     
-                  <?= form_close() ?>
 
+                  
+                  </form>
                      
                    </div>
                     </section>	 

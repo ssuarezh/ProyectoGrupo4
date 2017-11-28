@@ -1,14 +1,16 @@
 <?php
-if (!defined('BASEPATH'))
-   exit('No direct script access allowed');
+if (!defined('BASEPATH')) exit('No direct script access allowed');
+
 class Usuarios extends CI_Controller {
    public function __construct() {
       parent::__construct();
    }
+   
    public function iniciar_sesion() {
       $data = array();
       $this->load->view('usuarios/iniciar_sesion', $data);
    }
+
    public function iniciar_sesion_post() {
       if ($this->input->post()) {
          $nombre = $this->input->post('nombre');

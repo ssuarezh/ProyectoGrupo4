@@ -8,6 +8,16 @@ function __construct(){
     $this->load->database();
 }
 
+
+
+function verificarCodigoEntidad1($v3)
+{
+    $sql= "SELECT entidad.Id, entidad.Id_TipoEntidad FROM entidad WHERE entidad.codigo =?";
+    return $this->db->query($sql, array($v3));
+    
+}
+
+
 function crearEncabezado($nombreArchivo,$fechaInicio)
 {
     $valores = array(

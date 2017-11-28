@@ -12,7 +12,7 @@
                     </div>	
                      <div class="col-md-4">
                           
-                 		<form action="index_submit" method="get" accept-charset="utf-8">
+                 		<?= form_open_multipart("cargarArchivo/cargarDatos")?>
                  			<label for="identidad">
                  				Seleccionar Entidad
                  			</label>
@@ -29,8 +29,12 @@
                             <label for="Subir_A">
                  			 Subir Archivo
                  			</label>
-                            <input type="file" name="Subir_A">
-                 		</form>
+							 <?= form_upload([
+								'name'  => 'archivo',
+								'id'    => 'archivo'
+							])?>
+							<?= form_submit('sub','Cargar')?>  
+							<?= form_close()?>
                  	</div>	
                      <div class="col-md-4">
                     </div>

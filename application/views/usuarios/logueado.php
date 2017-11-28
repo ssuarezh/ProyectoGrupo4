@@ -7,7 +7,7 @@
  <body>
     <h1> Bienvenido/a <?php echo $nombre ?> </h1>
     <p>
-       <a href="<?php echo base_url() ?>index.php/usuarios/cerrar_sesion"> Cerrar sesión </a>
+       <a href="<?php echo base_url() ?>index.php/LoginControlador/cerrar_sesion"> Cerrar sesión </a>
     </p>
  </body>
 </html>
