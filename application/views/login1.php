@@ -34,6 +34,7 @@ h2
 	margin-bottom: 20px;
 	color:rgba(0,0,0,0,5);
 }
+
 input 
 {
 	display: block;
@@ -82,10 +83,11 @@ div.message
 	<!--div class="message">
 	     <?= $message ?>
     </div-->
-	<h2>Login Usuario</h2>
+	<h2>Login Usuario Recaudo</h2>
 	   <input type="text" placeholder="&#128590; Usuario" name="nombre" required="Este campo es requerido">
 	   <input type="password" placeholder="&#128272; Contraseña" name="contrasena" required="Este campo es requerido">
 	    <input type="submit" value="Iniciar sesión" >
+	    <h2><a href="<?php echo base_url() ?>index.php/LoginControladorContable/iniciar_sesion"> Login Contable </a></h2>
 	</form>
 </body>
 </html>

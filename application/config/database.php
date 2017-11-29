@@ -96,24 +96,25 @@ $db['default'] = array(
 );
 
 
-$db['postgresql'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'proy452a',
-	'database' => 'base_recaudo_g4_nueva',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
+$db['postgres'] = array(
+ 'dsn' => '',
+ 'hostname' => 'localhost',
+ 'username' => 'postgres',
+ 'password' => '1234',
+ 'database' => 'contable_g4',
+ 'dbdriver' => 'postgre',
+ 'dbprefix' => '',
+ 'pconnect' => FALSE,
+ 'db_debug' => (ENVIRONMENT !== 'production'),
+ 'cache_on' => FALSE,
+ 'cachedir' => '',
+ 'char_set' => 'utf8',
+ 'dbcollat' => 'utf8_general_ci',
+ 'swap_pre' => '',
+ 'encrypt' => FALSE,
+ 'compress' => FALSE,
+ 'stricton' => FALSE,
+ 'failover' => array(),
+ 'save_queries' => TRUE
 );
+$db['postgres']['port'] = 5433;
