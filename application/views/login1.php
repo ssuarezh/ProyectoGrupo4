@@ -88,6 +88,7 @@ div.message
 	   <input type="password" placeholder="&#128272; Contraseña" name="contrasena" required="Este campo es requerido">
 	    <input type="submit" value="Iniciar sesión" >
 	    <h2><a href="<?php echo base_url() ?>index.php/LoginControladorContable/iniciar_sesion"> Login Contable </a></h2>
+	     <h2><a href="<?php echo base_url() ?>index.php/LoginAfiliado/iniciar_sesion"> Login Afiliado </a></h2>
 	</form>
 </body>
 </html>
