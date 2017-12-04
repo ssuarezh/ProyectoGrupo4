@@ -12,14 +12,14 @@
 }
 
 body{
-background: url(<?= base_url()?>static/imagenes/citi_recaudo.jpg); 
+background: url(<?=base_url()?>static/imagenes/Fondo_Fernando.png);
 display: flex;
 min-height: 100vh;
 margin: 0;
 
 }
 
-form 
+form
 {
 	margin: auto;
 	width: 50%;
@@ -34,8 +34,7 @@ h2
 	margin-bottom: 20px;
 	color:rgba(0,0,0,0,5);
 }
-
-input 
+input
 {
 	display: block;
 	padding: 10px;
@@ -68,31 +67,30 @@ div.message
 	font-size: 20px;
 	margin-bottom: 5%;
 }
-@media (max-width: 768px) 
+@media (max-width: 768px)
 {
 	form
 	{
 		width:95%;
 	}
-	
-}	
+
+}
 	</style>
 </head>
 <body>
-	<form action="<?= base_url()?>index.php/LoginControlador/iniciar_sesion_post" method="post">
+	<form action="<?=base_url()?>index.php/LoginAfiliado/iniciar_sesion_post" method="post">
 	<div class="message">
-	     <?= $message ?>
-    </div>
-	<h2>Login Usuario Recaudo</h2>
-	    
-	   <input type="text" placeholder="&#128590; Usuario" name="nombre" required="Este campo es requerido">
+<?=$message?>
+</div>
+	<h2>Login Afiliado</h2>
+	   <input type="text" placeholder="&#128590; Cédula" name="cedula" required="Este campo es requerido"  >
 	   <input type="password" placeholder="&#128272; Contraseña" name="contrasena" required="Este campo es requerido">
-        <div align="center">
-        	  <?php echo $this->recaptcha->render(); ?>
+	   <div align="center">
+<?php echo $this->recaptcha->render();?>
         </div>
 	    <input type="submit" value="Iniciar sesión" >
-	    <h2><a href="<?php echo base_url() ?>index.php/LoginControladorContable/iniciar_sesion"> Login Contable </a></h2>
-	     <h2><a href="<?php echo base_url() ?>index.php/LoginAfiliado/iniciar_sesion"> Login Afiliado </a></h2>
+
 	</form>
+
 </body>
 </html>

@@ -7,8 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Menú afiliado </title>
 
 
-	<link rel = "stylesheet" type = "text/css" 
-  	 href = "<?php echo base_url(); ?>css/estilos.css">
+	<link rel = "stylesheet" type = "text/css"
+  	 href = "<?php echo base_url();?>css/estilos.css">
 
 
 <nav>
@@ -18,13 +18,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<li><a href="/Proyectogrupo4/index.php/LoginAfiliado/cerrar_sesion"><FONT FACE="arial">Cerrar Sesión</FONT></a></li>
 			</ul>
 		</nav>
-       
+
        	<section id="cargar_blank" class="section" >
 
                  	<div class="container" style="padding-left:35%; padding-right: 25%; " >
                  		<h1> Bienvenido Afiliado </h1>
                    </div>
         </section>
-                   
+
 	</body>
 </html>

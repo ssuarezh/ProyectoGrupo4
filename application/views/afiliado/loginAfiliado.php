@@ -12,7 +12,7 @@
 }
 
 body{
-background: url(<?= base_url()?>static/imagenes/montana.jpg); 
+background: url(<?= base_url()?>static/imagenes/Fondo_Fernando.png); 
 display: flex;
 min-height: 100vh;
 margin: 0;
@@ -79,12 +79,15 @@ div.message
 </head>
 <body>
 	<form action="<?= base_url()?>index.php/LoginAfiliado/iniciar_sesion_post" method="post">
-	<!--div class="message">
+	<div class="message">
 	     <?= $message ?>
-    </div-->
+    </div>
 	<h2>Login Afiliado</h2>
-	   <input type="text" placeholder="&#128590; Cédula" name="cedula" required="Este campo es requerido">
+	   <input type="text" placeholder="&#128590; Cédula" name="cedula" required="Este campo es requerido"  >
 	   <input type="password" placeholder="&#128272; Contraseña" name="contrasena" required="Este campo es requerido">
+	   <div align="center">
+        	  <?php echo $this->recaptcha->render(); ?>
+        </div>
 	    <input type="submit" value="Iniciar sesión" >
 	  
 	</form>

@@ -8,20 +8,32 @@ class LoginAfiliado extends CI_Controller {
       $this->load->model('Login_Afiliado');
       $this->load->helper('url');
       $this->load->helper('form');
+      $this->load->library('recaptcha');
    }
 
    public function iniciar_sesion() {
       $data = array();
-      $this->load->view('afiliado/loginAfiliado', $data);
+       $algo['message'] ='';
+      $this->load->view('afiliado/loginAfiliado', $algo);
    }
 
    public function iniciar_sesion_post() {
+      
+  
       if ($this->input->post()) {
          $cedula = $this->input->post('cedula');
+         
          $contrasena = $this->input->post('contrasena');
+         $captcha_answer = $this->input->post('g-recaptcha-response');
+        $response = $this->recaptcha->verifyResponse($captcha_answer);
          $this->load->model('Login_Afiliado');
          $usuario = $this->Login_Afiliado->usuario_por_nombre_contrasena($cedula, $contrasena);
-         if ($usuario) {
+          if(!$response)
+          {
+             $algo['message'] = '<div style="color:#FF0000" class="height:10%; width:20%; padding-bottom:100px; margin-bottom: 50px;"> Todos Los Campos Son Requeridos </div>';
+            $this->load->view('login_Afiliado',$algo);
+          } 
+         if ($usuario && $response['success']) {
             $usuario_data = array(
                'id' => $usuario->id_afiliado,
                'cedula' => $usuario->cedula,
@@ -32,9 +44,11 @@ class LoginAfiliado extends CI_Controller {
             $this->load->view('afiliado/inicio');
             $this->encontrar($cedula);
          } else {
-            $this->load->view('afiliado/loginAfiliado');
+              $algo['message'] = '<div style="color:#FF0000" class="height:10%; width:20%; padding-bottom:100px; margin-bottom: 50px;"> El usuario o contraseña son incorrectos  </div>';
+            $this->load->view('afiliado/loginAfiliado',$algo);
             //redirect('afiliado/loginAfiliado');
          }
+  
       } else {
          $this->iniciar_sesion();
       }
@@ -90,7 +104,8 @@ class LoginAfiliado extends CI_Controller {
       );
       $this->session->set_userdata($usuario_data);
       //redirect('');
-      $this->load->view('afiliado/loginAfiliado');
+        $algo['message'] = '<div style="color:#FF0000" class="height:10%; width:20%; padding-bottom:100px; margin-bottom: 50px;"> Sesion Cerrada Correctamente </div>';
+      $this->load->view('afiliado/loginAfiliado',$algo);
    }
 }
 
