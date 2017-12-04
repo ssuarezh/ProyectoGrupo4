@@ -29,7 +29,7 @@ class LoginControladorContable extends CI_Controller {
             );
             $this->session->set_userdata($usuario_data);
             //redirect('usuarios/logueado');
-            $this->load->view('header/header');
+            $this->load->view('header/headerContable');
             $this->load->view('contable/view_contable');
             $this->load->view('footer/footer');
          } else {
@@ -46,7 +46,7 @@ class LoginControladorContable extends CI_Controller {
          $data = array();
          $data['nombre'] = $this->session->userdata('nombre');
          //$this->load->view('usuarios/logueado', $data);
-         $this->load->view('header/header');
+         $this->load->view('header/headerContable');
          $this->load->view('contable/view_contable', $data);
          $this->load->view('footer/footer');
       }else{

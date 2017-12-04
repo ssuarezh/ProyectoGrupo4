@@ -1,4 +1,4 @@
-	<!-- section: team -->
+<!-- section: team -->
 	<section id="cargar" class="section green" >
 		<div class="container" >
 			<h4>Generar Reporte</h4>
@@ -10,23 +10,21 @@
                  	<div class="container" style="padding-left:40%; padding-right: 25%; " >
 
                       <div class="message">
-                          <?= $message ?>
+<?=$message?>
                        </div>
-                     
+
                       <label for="id_entidad">
                         Seleccionar Entidad
                       </label>
-                      <form action="<?= base_url() ?>index.php/ReporteControlador/generarReporte" method="POST">  
-                       <!-- <?php //echo form_open('/ReporteControlador/generarReporte');?> -->
+                      <form action="<?=base_url()?>index.php/ReporteControlador/generarReporte" method="POST">
+                       <!-- <?php //echo form_open('/ReporteControlador/generarReporte');?>-->
                       <select name="id_entidad" class="form-control">
-                                    <?php
-                                        foreach($entidades as $row)
-                                        { 
+<?php
+foreach ($entidades as $row) {
 
-                                           echo '<option value="'.$row->Id.'">'.$row->NombreEntidad.'</option>';
-                                        }
-                                       ?> 
-                      </select>
+	echo '<option value="'.$row->Id.'">'.$row->NombreEntidad.'</option>';
+}
+?></select>
                       <label for="datetimepicker1">
                         Seleccionar fecha inicial
                       </label>
@@ -48,25 +46,24 @@
                                           </span>
                                         </div>
 
-                            
-                    <div class="col-md-12" style="padding-left: 5%; margin-top: 20px;">
-                        
-                              <input type="Submit" value="Generar Reporte "> 
-                         </div>     
 
-                  
+                    <div class="col-md-12" style="padding-left: 5%; margin-top: 20px;">
+
+                              <input type="Submit" value="Generar Reporte ">
+                         </div>
+
+
                   </form>
-                     
+
                    </div>
-                    </section>	 
+                    </section>
 			        <div class="col-md-2">
                    </div>
-                 	
+
 	   </div>
 		</div>
-		<!-- /.container -->	
+		<!-- /.container -->
 	</section>
 	<!-- end section: team -->
 	<!-- section: services -->
-	
-	
+
