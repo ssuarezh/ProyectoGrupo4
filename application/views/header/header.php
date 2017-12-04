@@ -36,7 +36,9 @@
 						<ul id="menu-main" class="nav">
 							<li><a title="Cargar_A" href="<?= base_url()?>index.php/cargararchivo">Cargar Archivo</a></li>
 							<li><a title="services" href="<?= base_url()?>index.php/reporteControlador">Generar Reporte</a></li>
+							<li><a title="services" href="<?= base_url()?>index.php/recaudo_auditoria">Ver Auditoria</a></li>
 							<li><a title="services" href="<?= base_url()?>index.php/LoginControlador/cerrar_sesion">Cerrar Sesión</a></li>
+					
 						</ul>
 					</nav>
 				</div>
