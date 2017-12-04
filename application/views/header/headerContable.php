@@ -34,6 +34,7 @@
 					<!-- navigation -->
 					<nav class="pull-right nav-collapse collapse">
 						<ul id="menu-main" class="nav">
+							<li><a title="services" href="<?= base_url()?>index.php/contable_auditoria">Ver Auditoria</a></li>
 							<li><a title="services" href="<?= base_url()?>index.php/LoginControladorContable/cerrar_sesion">Cerrar Sesión</a></li>
 						</ul>
 					</nav>
