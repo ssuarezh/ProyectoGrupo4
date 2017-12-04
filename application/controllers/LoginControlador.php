@@ -77,6 +77,5 @@ class LoginControlador extends CI_Controller {
    }
 }
 
-
 ?>
 

@@ -72,8 +72,7 @@ class LoginControladorContable extends CI_Controller {
       );
        $algo['message'] = '<div style="color:#FF0000" class="height:10%; width:20%; padding-bottom:100px; margin-bottom: 50px;"> ha cerrado sesion correctamente </div>';
       $this->session->set_userdata($usuario_data);
-      //redirect('');
-      $this->load->view('loginContable',$alg);
+      $this->load->view('loginContable',$algo);
    }
 }
 
