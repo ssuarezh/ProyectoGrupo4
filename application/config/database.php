@@ -77,7 +77,7 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => '12345678',
+	'password' => 'proy452a',
 	'database' => 'base_recaudo_g4_nueva',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -117,4 +117,4 @@ $db['postgres'] = array(
  'failover' => array(),
  'save_queries' => TRUE
 );
-$db['postgres']['port'] = 5432;
+$db['postgres']['port'] = 5433;

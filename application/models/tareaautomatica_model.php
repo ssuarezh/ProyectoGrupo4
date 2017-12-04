@@ -8,6 +8,12 @@ function __construct(){
     $this->load->database();
 }
 
+function obtenerTipos()
+{
+   // $query=$this->db->query("SELECT Id, Nombre_TipoEntidad FROM tipo_entidad"); 
+   $query = $this->db->get('tipo_entidad');
+   return $query->result();
+}
 
 
 function verificarCodigoEntidad1($v3)
