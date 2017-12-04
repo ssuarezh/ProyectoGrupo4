@@ -5,7 +5,7 @@
             	<form action = "<?= base_url()?>index.php/actualizarInfoAfiliado/info" method="post">
                
             	</form>
-            	<a href="<?= base_url()?>index.php/contable_auditoria"> <input type="submit" value="Ver Auditoria" > </a>
+            	
           
 		</div>
 		<!-- /.container -->	
