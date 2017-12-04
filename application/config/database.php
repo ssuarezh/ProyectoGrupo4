@@ -117,4 +117,4 @@ $db['postgres'] = array(
  'failover' => array(),
  'save_queries' => TRUE
 );
-$db['postgres']['port'] = 5432;
+$db['postgres']['port'] = 5433;
