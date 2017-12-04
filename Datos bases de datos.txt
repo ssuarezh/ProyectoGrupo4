@@ -1,0 +1,5 @@
+Nombre recaudo: base_recaudo_g4_nueva
+Clave recaudo: 12345678
+
+Nombre contable: contable_nueva 
+Clave contable: 1234
