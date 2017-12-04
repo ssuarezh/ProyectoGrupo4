@@ -66,16 +66,16 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2017&#x2f;11&#x2f;29 12&#x3a;13&#x3a;11.437</created_date>
+  <created_date>2017&#x2f;12&#x2f;02 16&#x3a;30&#x3a;49.432</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2017&#x2f;11&#x2f;29 12&#x3a;13&#x3a;11.437</modified_date>
+  <modified_date>2017&#x2f;12&#x2f;02 16&#x3a;30&#x3a;49.432</modified_date>
     <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>contable_connection1</name>
+    <name>conexion</name>
     <server>localhost</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
@@ -92,10 +92,10 @@
   </connection>
   <order>
   <hop> <from>cruce_contable</from><to>Insert &#x2f; Update</to><enabled>Y</enabled> </hop>
-  <hop> <from>Insert &#x2f; Update</from><to>credito_input</to><enabled>Y</enabled> </hop>
-  <hop> <from>Calculator</from><to>Insert &#x2f; Update 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>credito_input</from><to>Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>Insert &#x2f; Update</from><to>credito</to><enabled>Y</enabled> </hop>
+  <hop> <from>credito</from><to>Select values</to><enabled>Y</enabled> </hop>
   <hop> <from>Select values</from><to>Calculator</to><enabled>Y</enabled> </hop>
+  <hop> <from>Calculator</from><to>Update Credito</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Insert &#x2f; Update</name>
@@ -108,7 +108,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>contable_connection1</connection>
+    <connection>conexion</connection>
     <commit>100</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
@@ -121,15 +121,15 @@
         <name2/>
       </key>
       <value>
-        <name>valor_pagado</name>
-        <rename>valor</rename>
+        <name>ultimo_pago</name>
+        <rename>total_pagado</rename>
         <update>Y</update>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>240</xloc>
-      <yloc>192</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -138,15 +138,15 @@
     <name>cruce_contable</name>
     <type>TableInput</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>contable_connection1</connection>
-    <sql>SELECT &#x2a; FROM cruce</sql>
+    <connection>conexion</connection>
+    <sql>SELECT &#x2a; FROM cruce_contable</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -155,24 +155,24 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>112</xloc>
-      <yloc>192</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>credito_input</name>
+    <name>credito</name>
     <type>TableInput</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>contable_connection1</connection>
-    <sql>SELECT cedula_afiliado, valor_total, valor_pagado FROM credito</sql>
+    <connection>conexion</connection>
+    <sql>SELECT &#x2a; FROM credito</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -180,78 +180,8 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Calculator</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-       <calculation><field_name>nuevo_valor</field_name>
-<calc_type>SUBTRACT</calc_type>
-<field_a>valor_total</field_a>
-<field_b>valor_pagado</field_b>
-<field_c/>
-<value_type>None</value_type>
-<value_length>-1</value_length>
-<value_precision>-1</value_precision>
-<remove>N</remove>
-<conversion_mask/>
-<decimal_symbol/>
-<grouping_symbol/>
-<currency_symbol/>
-</calculation>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>528</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Insert &#x2f; Update 2</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>contable_connection1</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema/>
-      <table>credito</table>
-      <key>
-        <name>cedula_update</name>
-        <field>cedula_afiliado</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>valor_total</name>
-        <rename>nuevo_valor</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>624</xloc>
-      <yloc>192</yloc>
+      <xloc>352</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -268,22 +198,92 @@
            <schema_name/>
            </partitioning>
     <fields>      <field>        <name>cedula_afiliado</name>
-        <rename>cedula_update</rename>
+        <rename>cedula_credito</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>valor_total</name>
+      </field>      <field>        <name>ultimo_pago</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>valor_pagado</name>
+      </field>      <field>        <name>saldo_vigente</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>448</xloc>
-      <yloc>192</yloc>
+      <xloc>464</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Calculator</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <calculation><field_name>nuevo_saldo</field_name>
+<calc_type>SUBTRACT</calc_type>
+<field_a>saldo_vigente</field_a>
+<field_b>ultimo_pago</field_b>
+<field_c/>
+<value_type>None</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>576</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Update Credito</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>conexion</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema/>
+      <table>credito</table>
+      <key>
+        <name>cedula_credito</name>
+        <field>cedula_afiliado</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>saldo_vigente</name>
+        <rename>nuevo_saldo</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>688</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
